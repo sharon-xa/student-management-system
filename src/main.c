@@ -1,4 +1,5 @@
 #include "input.h"
+#include "student.h"
 #include "ui.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +13,7 @@ void startProgram() {
 
         switch (userChoice) {
             case '1':
-                printf("add a student\n");
+                add_student();
                 break;
             case '2':
                 printf("remove a student");

@@ -1,19 +1,14 @@
+#include "database.h"
 #include "input.h"
-#include <stdlib.h>
-#include <string.h>
-
-struct Student {
-    int id;
-    char first_name[25];
-    char last_name[25];
-    char date_of_birth[11]; // YYYY-MM-DD format
-    char gender[10];
-    char address[255];
-    char department[50];
-};
 
 void add_student() {
     struct Student s;
     s.id = getUserInputInt("Enter id");
-    getUserInputStr("Enter student name", s.first_name, sizeof(s.first_name));
+    getUserInputStr("Enter first name", s.first_name, sizeof(s.first_name));
+    getUserInputStr("Enter last name", s.last_name, sizeof(s.last_name));
+    getUserInputStr("Enter date of birth (YYYY-MM-DD)", s.date_of_birth, sizeof(s.date_of_birth));
+    getUserInputStr("Enter address", s.address, sizeof(s.address));
+    getUserInputStr("Enter department", s.department, sizeof(s.department));
+
+    store_student(&s);
 }
