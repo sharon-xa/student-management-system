@@ -9,4 +9,4 @@ SpaceBeforeParens: ControlStatements
 IndentCaseLabels: true
 SortIncludes: true
 ReflowComments: true
-
+AllowShortLoopsOnASingleLine: true
