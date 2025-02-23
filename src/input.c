@@ -11,7 +11,13 @@ void getUserInputStr(const char* msg, char* buffer, size_t size) {
         return;
     }
 
-    buffer[strcspn(buffer, "\n")] = '\0';
+    size_t len = strcspn(buffer, "\n");
+    if (buffer[len] == '\n') {
+        buffer[len] = '\0';
+    } else {
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
+    }
 }
 
 int getUserInputInt(char* msg) {
@@ -23,6 +29,7 @@ int getUserInputInt(char* msg) {
         exit(1);
     }
 
+    while (getchar() != '\n');
     return input;
 }
 
@@ -35,6 +42,7 @@ char getUserInputChar(char* msg) {
         exit(1);
     }
 
+    while (getchar() != '\n');
     printf("\n");
     return input;
 }
