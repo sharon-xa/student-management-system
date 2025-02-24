@@ -1,9 +1,10 @@
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void getUserInputStr(const char* msg, char* buffer, size_t size) {
+void get_user_input_str(const char* msg, char* buffer, size_t size, bool (*validate)(const char*)) {
     printf("%s: ", msg);
 
     if (fgets(buffer, size, stdin) == NULL) {
@@ -18,22 +19,35 @@ void getUserInputStr(const char* msg, char* buffer, size_t size) {
         int c;
         while ((c = getchar()) != '\n' && c != EOF);
     }
+
+    if (!validate(buffer)) {
+        printf("bad input, please try again\n");
+        get_user_input_str(msg, buffer, size, validate);
+    }
 }
 
-int getUserInputInt(char* msg) {
+int get_user_input_int(char* msg, bool (*validate)(const int)) {
     printf("%s: ", msg);
 
     int input;
     if (scanf("%d", &input) != 1) {
         printf("Error: Invalid input\n");
-        exit(1);
     }
 
     while (getchar() != '\n');
+
+    while (!validate(input)) {
+        printf("bad input, please try again\n");
+
+        printf("%s: ", msg);
+        scanf("%d", &input);
+        while (getchar() != '\n');
+    }
+
     return input;
 }
 
-char getUserInputChar(char* msg) {
+char get_user_input_char(char* msg) {
     printf("%s: ", msg);
 
     char input;

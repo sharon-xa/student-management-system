@@ -1,6 +1,6 @@
 #ifndef UI
 #define UI
 
-void printProgramInstruction();
+void print_program_instruction();
 
 #endif

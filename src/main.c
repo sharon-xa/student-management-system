@@ -4,12 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void startProgram() {
+void start_program() {
     char userChoice;
     do {
         printf("\n");
-        printProgramInstruction();
-        userChoice = getUserInputChar("Enter option");
+        print_program_instruction();
+        userChoice = get_user_input_char("Enter option");
 
         switch (userChoice) {
             case '1':
@@ -44,6 +44,6 @@ void startProgram() {
 }
 
 int main() {
-    startProgram();
+    start_program();
     return 0;
 }

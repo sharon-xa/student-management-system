@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void printProgramInstruction() {
+void print_program_instruction() {
     printf("1. add a new student.\n");
     printf("2. remove a student.\n");
     printf("3. search for a student.\n");
